@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont,
+    "SF Pro Text", sans-serif;
+}
+
+/* Hero semicircle + light sweep animation */
+.hero-circle {
+  position: relative;
+  width: min(40rem, 96vw);
+  aspect-ratio: 1 / 1;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 50% -10%,
+    rgba(190, 242, 100, 0.75),
+    rgba(10, 10, 15, 1) 55%,
+    transparent 72%
+  );
+  overflow: hidden;
+  border: 1px solid rgba(190, 242, 100, 0.4);
+  box-shadow:
+    0 0 40px rgba(190, 242, 100, 0.7),
+    0 0 160px rgba(190, 242, 100, 0.45);
+  /* Slightly deeper semicircle so inner content fits comfortably */
+  mask-image: radial-gradient(circle at 50% 0%, black 0, black 65%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 0%, black 0, black 65%, transparent 80%);
+}
+
+@media (min-width: 1024px) {
+  .hero-circle {
+    width: min(42rem, 96vw);
+  }
+}
+
+.hero-circle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at left center,
+    rgba(234, 244, 170, 0.98),
+    transparent 55%
+  );
+  transform: translateX(-40%);
+  opacity: 0;
+  animation: heroSweep 1.8s ease-out forwards;
+}
+
+.hero-circle::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(190, 242, 100, 0.32), transparent 68%),
+    radial-gradient(circle at 50% 100%, rgba(34, 197, 94, 0.22), transparent 70%);
+  opacity: 0.7;
+  mix-blend-mode: screen;
+}
+
+@keyframes heroSweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-40%);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(40%);
+  }
+}
+
+/* Subsection flowing curve lines */
+.curves-line {
+  stroke-dasharray: 820;
+  stroke-dashoffset: 0;
+  animation: curvesDash 22s linear infinite;
+}
+
+.curves-line--slow {
+  animation-duration: 32s;
+}
+
+.curves-line--reverse {
+  animation-direction: reverse;
+}
+
+@keyframes curvesDash {
+  to {
+    stroke-dashoffset: -1640;
+  }
+}
