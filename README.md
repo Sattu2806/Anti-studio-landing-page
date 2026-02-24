@@ -1,6 +1,6 @@
 ## Anti-style Animated Landing Page
 
-<img width="1301" height="791" alt="Screenshot 2026-02-24 at 2 05 16 PM" src="https://github.com/user-attachments/assets/af8d0e5c-c8d9-413c-ad64-2f5251542a83" />
+<img width="1440" height="810" alt="Screenshot 2026-02-24 at 2 26 18 PM" src="https://github.com/user-attachments/assets/b703cfb4-b9ed-44fb-b2d0-e38965605bf3" />
 
 A single-page marketing experience built with **Next.js App Router + Tailwind**, inspired by high-end SaaS “anti aesthetic” landing pages. It features:
 
